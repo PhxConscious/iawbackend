@@ -4,7 +4,7 @@ module.exports = {
     development: {
         client: 'pg',
         connection: {
-            database: 'instAwesome',
+            database: 'iaw',
             host: '127.0.0.1'
         }
     },
