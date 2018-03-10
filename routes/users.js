@@ -25,9 +25,9 @@ router.post('/new', function(req, res, next) {
 });
 
 //Show single user
-router.get('/:id', function (req, res, next) {
+router.get('/:firebase_id', function (req, res, next) {
     knex.select().table(`user_table`)
-        .where("user_id", req.params.id)
+        .where("firebase_id", req.params.firebase_id)
         .then(user => {
             res.send(user)
         })
