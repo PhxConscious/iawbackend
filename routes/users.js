@@ -36,7 +36,7 @@ router.get('/:firebase_id', function (req, res, next) {
 router.put('/:id', function (req, res, next) {
     console.log("put", req.body.userProgress)
     knex(`user_table`)
-        .where("user_id", req.params.id)
+        .where("firebase_id", req.params.id)
         .update({
             "user_progress": req.body.userProgress,
         })
