@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
 
 
 //Show single user
-router.get('/test', function (req, res, next) {
+router.get('/module1', function (req, res, next) {
     knex.raw(`select * from lms_books`)
         .then(function (book) {
             res.send(book)

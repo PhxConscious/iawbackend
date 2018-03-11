@@ -10,19 +10,26 @@ router.get('/', function(req, res) {
         })
 });
 
+
+
 //Post new user to database
 router.post('/new', function(req, res, next) {
-    knex.raw(`insert into user_table (first_name, last_name, user_email, user_phone, firebase_id ) values (
-    '${req.body.first_name}',
-    '${req.body.last_name}',
-    '${req.body.user_email}',
-    '${req.body.user_phone}',
-    '${req.body.firebase_id}'
-    )`)
-        .then(() => {
-            res.send('success')
-        })
+
+    knex('user_table')
+      .insert({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        user_email: req.body.user_email,
+        user_phone: req.body.user_phone,
+        firebase_id: req.body.firebase_id,
+        user_progress: req.body.user_progress
+      })
+      .returning("*")
+      .then(data => {
+      knex('user_table').select().where("firebase_id", req.body.firebase_id).then(user=> res.send(user))
+    })
 });
+
 
 //Show single user
 router.get('/:firebase_id', function (req, res, next) {
@@ -33,10 +40,9 @@ router.get('/:firebase_id', function (req, res, next) {
         })
 });
 
-router.put('/:id', function (req, res, next) {
-    console.log("put", req.body.userProgress)
+router.put('/:firebase_id', function (req, res, next) {
     knex(`user_table`)
-        .where("user_id", req.params.id)
+        .where("firebase_id", req.params.firebase_id)
         .update({
             "user_progress": req.body.userProgress,
         })
@@ -44,5 +50,9 @@ router.put('/:id', function (req, res, next) {
             knex('user_table').select().then(user => res.send(user))
         })
 });
+
+
+
+
 
 module.exports = router;
