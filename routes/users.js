@@ -47,7 +47,9 @@ router.put('/:firebase_id', function (req, res, next) {
             "user_progress": req.body.userProgress,
         })
         .then(user => {
-            knex('user_table').select().then(user => res.send(user))
+            knex("user_table")
+              .where("firebase_id", req.params.firebase_id)
+                .then(user => res.send(user))
         })
 });
 
