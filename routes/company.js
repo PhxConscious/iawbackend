@@ -23,8 +23,8 @@ router.get('/:id', function (req, res, next) {
 router.post('/new', function(req, res, next) {
     knex('user_table')
       .insert({
-        company_name: req.body.first_name,
-        company_email: req.body.last_name,
+        company_name: xxxxme,
+        company_email: req.boxxxme,
         company_phone: req.body.user_email,
         brand_id: req.body.user_phone,
         company_goals: req.body.firebase_id,
