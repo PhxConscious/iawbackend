@@ -4,6 +4,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return knex('company_table').insert([
         {
+          company_id:'1234567890',
           company_name: 'test company_name',
           company_email: "test company_email",
           company_phone: "5555555555",
