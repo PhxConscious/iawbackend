@@ -24,6 +24,7 @@ router.get('/:firebase_id', function(req, res) {
 
 router.post('/new/:firebase_id', function(req, res) {
     let randomNumber = randomNumberGen();
+    console.log('userCompanyJoin', req.body)
     knex('user_company_join')
         .insert({
             firebase_id: req.params.firebase_id,

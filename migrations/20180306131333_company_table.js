@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
         table.string('brand_id');
         table.string('company_goals');
         table.string('company_content_creator');
-        table.string('company_username');
         table.string('company_password');
     });
 };
