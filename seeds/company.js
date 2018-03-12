@@ -11,7 +11,6 @@ exports.seed = function(knex, Promise) {
           brand_id: "test_brand_id",
           company_goals: "test company_goals",
           company_content_creator: "test company_content_creator",
-          company_username: "test company_username",
           company_password: "test company_password"
         }
       ]);
