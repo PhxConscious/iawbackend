@@ -11,13 +11,22 @@ router.get('/', function (req, res) {
 });
 
 
-router.get('/:id', function (req, res, next) {
+router.get('/:company_id', function (req, res, next) {
     knex.select().table(`company_table`)
-        .where("company_id", req.params.id)
+        .where("company_id", req.params.company_id)
         .then(company => {
-            knex('company_table').select().where("company_id", req.params.id).then(company => res.send(company))
+            knex('company_table').select().where("company_id", req.params.company_id).then(company => res.send(company))
         })
 });
+
+
+// this route returns a list of all the companies associated with given firebase_id
+router.get('/list/:firebase_id', function (req, res, next) {
+    knex.from('company_table').innerJoin('user_company_join', 'company_table.company_id', 'user_company_join.company_id').select()
+    .then(companies => {
+      res.send(companies)
+    })
+})
 
 //Post new company to database
 router.post('/new/:company_id', function (req, res, next) {
@@ -30,7 +39,6 @@ router.post('/new/:company_id', function (req, res, next) {
             brand_id: req.body.brand_id,
             company_goals: req.body.company_goals,
             company_content_creator: req.body.company_content_creator,
-            company_username: req.body.company_username,
             company_password: req.body.company_password
         })
         .returning("*")
@@ -40,6 +48,7 @@ router.post('/new/:company_id', function (req, res, next) {
 });
 
 router.put('/new/:company_id', function (req, res, next) {
+  console.log("company", req.body)
     knex('company_table')
         .update({
             company_id: req.params.company_id,
