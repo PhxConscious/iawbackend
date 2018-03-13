@@ -297,7 +297,7 @@ exports.seed = function(knex, Promise) {
                               },
                               {
                                  "id":"u04l03q02",
-                                 "contentType":"checkTaskscheckTasks",
+                                 "contentType":"checkTasks",
                                  "title":"Images",
                                  "description":""
                               },{
