@@ -52,7 +52,7 @@ router.post('/new/:company_id', function (req, res, next) {
             facebook_page_url: req.body.facebook_page_url,
             facebook_goals: req.body.facebook_goals,
             twitter_username: req.body.twitter_username,
-            twitter_goals_id: req.body.twitter_goals,
+            twitter_goals: req.body.twitter_goals,
             linkedin_profile_url: req.body.linkedin_profile_url,
             linkedin_goals: req.body.linkedin_goals,
             google_plus_profile_url: req.body.google_plus_profile_url,
