@@ -22,7 +22,7 @@ router.get('/:company_id', function (req, res, next) {
 
 // this route returns a list of all the companies associated with given firebase_id
 router.get('/list/:firebase_id', function (req, res, next) {
-    knex.from('company_table').innerJoin('user_company_join', 'company_table.company_id', 'user_company_join.company_id').select()
+    knex.from('company_table').innerJoin('user_company_join', 'company_table.company_id', 'user_company_join.company_id').select().where('user_company_join.firebase_id', req.params.firebase_id)
     .then(companies => {
       res.send(companies)
     })
