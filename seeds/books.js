@@ -157,6 +157,7 @@ exports.seed = function(knex, Promise) {
                               {
                                  "id":"u02l03q04",
                                  "contentType":"textArea",
+                                 "columnName": "instagram_bio",
                                  "title":"Compose your Bio here, copy and paste it in your bio in instagram AND SUBMIT IT HERE FOR THE EXPERTS REVIEW.",
                                  "description":"How to comment on a story"
                               },
@@ -219,18 +220,21 @@ exports.seed = function(knex, Promise) {
                               {
                                  "id":"u03l02q01",
                                  "contentType":"textArea",
+                                 "columnName": "insta_goal1",
                                  "title":"Write your first (of three) milestone that can be accomplished in 3 weeks",
                                  "description":""
                               },
                               {
                                  "id":"u03l02q02",
                                  "contentType":"textArea",
+                                 "columnName": "insta_goal2",
                                  "title":"Write your second (of three) milestone that can be accomplished in 3 weeks",
                                  "description":""
                               },
                               {
                                  "id":"u03l02q03",
                                  "contentType":"textArea",
+                                 "columnName": "insta_goal3",
                                  "title":"Write your last milestone that can be accomplished in 3 weeks",
                                  "description":""
                               }
@@ -267,6 +271,7 @@ exports.seed = function(knex, Promise) {
                               {
                                  "id":"u04l02q01",
                                  "contentType":"textInput",
+                                 "columnName": "cloudbased_storage_locale",
                                  "title":"Do you have a content bank now? Paste a link to dropbox, box, or other cloud based folder link... or something",
                                  "description":""
                               },
