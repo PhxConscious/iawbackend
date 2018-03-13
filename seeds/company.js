@@ -16,6 +16,7 @@ exports.seed = function (knex, Promise) {
                     google_business_profile: 'test.google.com',
                     instagram_username: 'test@instagram',
                     instagram_goals: 'money',
+                    instagram_bio: "we're a mom and pop shop",
                     facebook_page_url: 'blah.facebook.com',
                     facebook_goals: 'become ceo',
                     twitter_username: '@test_co',
@@ -32,7 +33,11 @@ exports.seed = function (knex, Promise) {
                     yelp_business_profile: 'test@yelp.com',
                     yelp_goals: '10 star rating',
                     better_business_bureau_profile: 'test@bbb.com',
-                    better_business_bureau_goals: '100%'
+                    better_business_bureau_goals: '100%',
+                    insta_goal1: 'learn the secrets',
+                    insta_goal2: 'of winning friends',
+                    insta_goal3: 'and influencing people',
+                    cloudbased_storage_locale: 'www.yermomsbasement.com',
                 }
             ]);
         });

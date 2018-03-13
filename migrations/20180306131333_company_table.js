@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
         table.string('google_business_profile');
         table.string('instagram_username');
         table.string('instagram_goals');
+        table.string('instagram_bio');
         table.string('facebook_page_url');
         table.string('facebook_goals');
         table.string('twitter_username');
@@ -30,6 +31,10 @@ exports.up = function(knex, Promise) {
         table.string('yelp_goals');
         table.string('better_business_bureau_profile');
         table.string('better_business_bureau_goals');
+        table.string('insta_goal1');
+        table.string('insta_goal2');
+        table.string('insta_goal3');
+        table.string('cloudbased_storage_locale');
     });
 };
 
