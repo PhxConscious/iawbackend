@@ -1,7 +1,8 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('expert_user_join', function(table){
-        table.integer('user_id');
-        table.integer('expert_id');
+        table.increments('expert_user_id');
+        table.string('user_id');
+        table.string('expert_id');
     });
 };
 
