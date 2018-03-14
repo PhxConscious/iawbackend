@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
             // Inserts seed entries
             return knex('user_table').insert([
                {
-                  "first_name":"Joe",
+                  "first_name":"Joe the client",
                   "last_name":"Seph",
                   "user_email":"testey@test.com",
                   "user_phone":"555-555-5555",
@@ -133,7 +133,7 @@ exports.seed = function(knex, Promise) {
                },
                {
         "user_id": 2,
-        "first_name": "Bob",
+        "first_name": "Bob the expert",
         "last_name": "Jenking",
         "user_email": "bob@test.com",
         "user_phone": "5555555555",
