@@ -12,6 +12,7 @@ var books = require('./routes/books');
 var company = require('./routes/company');
 var usercompanyjoin = require('./routes/userCompanyJoin');
 var userexpertjoin = require('./routes/userExpertJoin');
+var feedback = require('./routes/feedback');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/books', books);
 app.use('/company', company);
 app.use('/usercompanyjoin', usercompanyjoin);
 app.use('/userexpertjoin', userexpertjoin);
+app.use('/feedback', feedback);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
