@@ -20,4 +20,9 @@ router.get('/users/:expert_id', function(req, res) {
     .then(data=> res.send(data))
 })
 
+router.get('/freeusers', function(req,res) {
+  knex.select("*").from("user_table").leftOuterJoin('expert_user_join', "user_table.firebase_id", "expert_user_join.user_id").where("expert_id", null)
+    .then(data => res.send(data))
+})
+
 module.exports = router;
