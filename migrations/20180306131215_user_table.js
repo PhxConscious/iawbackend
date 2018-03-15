@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
         table.string('user_email');
         table.string('user_phone');
         table.string('firebase_id');
+        table.boolean('isExpert');
+        table.boolean('isAdmin');
         table.json('user_progress');
     });
 };
