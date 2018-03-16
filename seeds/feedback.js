@@ -5,7 +5,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('feedback').insert([
-        {firebase_id: 'asdfasdfasdfas', comment: "great job"},
+        {firebase_id: 'francoistheclient', comment: "great job"},
+        {firebase_id: 'joetheclient', comment: "Keep up the good work."}
       ]);
     });
 };
