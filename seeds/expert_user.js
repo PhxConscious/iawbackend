@@ -5,7 +5,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('expert_user_join').insert([
-        {user_id: "asdfasdfasdfas", expert_id: 'KaO2uDZiice9B9Mk2xAKgJqLvMj2'},
+        // {user_id: "asdfasdfasdfas", expert_id: 'KaO2uDZiice9B9Mk2xAKgJqLvMj2'},
+        {user_id: "sarahtheclient", expert_id:"bobtheexpert"}
       ]);
     });
 };
