@@ -30,4 +30,14 @@ router.get('/freeusers', function(req,res) {
     .then(data => res.send(data))
 })
 
+router.post("/new", function(req, res) {
+  knex("expert_user_join").insert({
+    expert_id: req.body.expert_id,
+    user_id: req.body.user_id
+  }).returning("*")
+  .then(data => {
+    res.send(data)
+  })
+})
+
 module.exports = router;
