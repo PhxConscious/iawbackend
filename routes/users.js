@@ -10,7 +10,13 @@ router.get('/', function(req, res) {
         })
 });
 
-
+router.get('/experts', function (req, res, next) {
+  knex('user_table').select("user_id", "first_name", "last_name", "user_email", "user_phone", "firebase_id", "isExpert", "isAdmin")
+    .where("isExpert", true)
+    .then(experts => {
+      res.send(experts)
+    })
+});
 
 //Post new user to database
 router.post('/new', function(req, res, next) {
@@ -52,8 +58,6 @@ router.put('/:firebase_id', function (req, res, next) {
                 .then(user => res.send(user))
         })
 });
-
-
 
 
 
