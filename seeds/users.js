@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
               "lessons": {
                 "u01l01": {
                   "lessonLocked": false,
-                  "lessonCompleted": false,
+                  "lessonCompleted": true,
                   "questions": {
                     "u01l01q01": false
                   }
@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
               "lessons": {
                 "u02l01": {
                   "lessonLocked": true,
-                  "lessonCompleted": false,
+                  "lessonCompleted": true,
                   "questions": {
                     "u02l01q01": false,
                     "u02l01q02": false,
@@ -46,7 +46,7 @@ exports.seed = function(knex, Promise) {
                 },
                 "u02l02": {
                   "lessonLocked": true,
-                  "lessonCompleted": false,
+                  "lessonCompleted": true,
                   "questions": {
                     "u02l02q01": false,
                     "u02l02q02": false,
@@ -56,7 +56,7 @@ exports.seed = function(knex, Promise) {
                 },
                 "u02l03": {
                   "lessonLocked": true,
-                  "lessonCompleted": false,
+                  "lessonCompleted": true,
                   "questions": {
                     "u02l03q01": false,
                     "u02l03q02": false,
@@ -67,7 +67,7 @@ exports.seed = function(knex, Promise) {
                 },
                 "u02l04": {
                   "lessonLocked": true,
-                  "lessonCompleted": false,
+                  "lessonCompleted": true,
                   "questions": {
                     "u02l04q01": false,
                     "u02l04q02": false
@@ -81,7 +81,7 @@ exports.seed = function(knex, Promise) {
               "lessons": {
                 "u03l01": {
                   "lessonLocked": false,
-                  "lessonCompleted": false,
+                  "lessonCompleted": true,
                   "questions": {
                     "u03l01q01": false
                   }
