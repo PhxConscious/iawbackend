@@ -389,12 +389,12 @@ exports.seed = function(knex, Promise) {
         },
         {
           "first_name": "sarahtheclient",
-          "last_name": "Jenking",
+          "last_name": "sarahsmith",
           "user_email": "sarah@test.com",
           "user_phone": "5555555555",
           "firebase_id": "sarahtheclient",
-          "isExpert": true,
-          "isAdmin": true,
+          "isExpert": false,
+          "isAdmin": false,
           "user_progress": {
             "u01": {
               "unitLocked": false,

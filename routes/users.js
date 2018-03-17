@@ -4,13 +4,22 @@ let knex = require('../db/knex');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-    knex.raw('select * from user_table')
+    knex('user_table').fullOuterJoin("expert_user_join", "user_table.firebase_id", "expert_user_join.user_id").select().where({
+      "isAdmin": false,
+      "isExpert": false
+    })
         .then(function(data) {
-            res.send(data.rows);
+            res.send(data);
         })
 });
 
-
+router.get('/experts', function (req, res, next) {
+  knex('user_table').select("user_id", "first_name", "last_name", "user_email", "user_phone", "firebase_id", "isExpert", "isAdmin")
+    .where("isExpert", true)
+    .then(experts => {
+      res.send(experts)
+    })
+});
 
 //Post new user to database
 router.post('/new', function(req, res, next) {
@@ -52,8 +61,6 @@ router.put('/:firebase_id', function (req, res, next) {
                 .then(user => res.send(user))
         })
 });
-
-
 
 
 
