@@ -4,9 +4,12 @@ let knex = require('../db/knex');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-    knex.raw('select * from user_table')
+    knex('user_table').fullOuterJoin("expert_user_join", "user_table.firebase_id", "expert_user_join.user_id").select().where({
+      "isAdmin": false,
+      "isExpert": false
+    })
         .then(function(data) {
-            res.send(data.rows);
+            res.send(data);
         })
 });
 
