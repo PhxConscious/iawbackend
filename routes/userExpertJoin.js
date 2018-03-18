@@ -40,4 +40,14 @@ router.post("/new", function(req, res) {
   })
 })
 
+router.delete('/:user_id', function(req, res, next) {
+  knex('expert_user_join')
+    .where('user_id', req.params.user_id)
+    .del()
+    .returning("*")
+    .then(data => {
+      res.send(data)
+  })
+})
+
 module.exports = router;
