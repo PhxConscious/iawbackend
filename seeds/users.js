@@ -14,85 +14,85 @@ exports.seed = function(knex, Promise) {
           "user_progress": {
             "u01": {
               "unitLocked": false,
-              "unitCompleted": false,
+              "unitCompleted": true,
               "lessons": {
                 "u01l01": {
                   "lessonLocked": false,
                   "lessonCompleted": true,
                   "questions": {
-                    "u01l01q01": false
+                    "u01l01q01": true
                   }
                 }
               }
             },
             "u02": {
-              "unitLocked": true,
-              "unitCompleted": false,
+              "unitLocked": false,
+              "unitCompleted": true,
               "lessons": {
                 "u02l01": {
-                  "lessonLocked": true,
+                  "lessonLocked": false,
                   "lessonCompleted": true,
                   "questions": {
-                    "u02l01q01": false,
-                    "u02l01q02": false,
-                    "u02l01q03": false,
-                    "u02l01q04": false,
-                    "u02l01q05": false,
-                    "u02l01q06": false,
-                    "u02l01q07": false,
-                    "u02l01q08": false,
-                    "u02l01q09": false
+                    "u02l01q01": true,
+                    "u02l01q02": true,
+                    "u02l01q03": true,
+                    "u02l01q04": true,
+                    "u02l01q05": true,
+                    "u02l01q06": true,
+                    "u02l01q07": true,
+                    "u02l01q08": true,
+                    "u02l01q09": true
                   }
                 },
                 "u02l02": {
-                  "lessonLocked": true,
+                  "lessonLocked": false,
                   "lessonCompleted": true,
                   "questions": {
-                    "u02l02q01": false,
-                    "u02l02q02": false,
-                    "u02l02q03": false,
-                    "u02l02q04": false
+                    "u02l02q01": true,
+                    "u02l02q02": true,
+                    "u02l02q03": true,
+                    "u02l02q04": true
                   }
                 },
                 "u02l03": {
-                  "lessonLocked": true,
+                  "lessonLocked": false,
                   "lessonCompleted": true,
                   "questions": {
-                    "u02l03q01": false,
-                    "u02l03q02": false,
-                    "u02l03q03": false,
-                    "u02l03q04": false,
-                    "u02l03q05": false
+                    "u02l03q01": true,
+                    "u02l03q02": true,
+                    "u02l03q03": true,
+                    "u02l03q04": true,
+                    "u02l03q05": true
                   }
                 },
                 "u02l04": {
-                  "lessonLocked": true,
+                  "lessonLocked": false,
                   "lessonCompleted": true,
                   "questions": {
-                    "u02l04q01": false,
-                    "u02l04q02": false
+                    "u02l04q01": true,
+                    "u02l04q02": true
                   }
                 }
               }
             },
             "u03": {
-              "unitLocked": true,
-              "unitCompleted": false,
+              "unitLocked": false,
+              "unitCompleted": true,
               "lessons": {
                 "u03l01": {
                   "lessonLocked": false,
                   "lessonCompleted": true,
                   "questions": {
-                    "u03l01q01": false
+                    "u03l01q01": true
                   }
                 },
                 "u03l02": {
                   "lessonLocked": false,
-                  "lessonCompleted": false,
+                  "lessonCompleted": true,
                   "questions": {
-                    "u03l02q01": false,
-                    "u03l02q02": false,
-                    "u03l02q03": false
+                    "u03l02q01": true,
+                    "u03l02q02": true,
+                    "u03l02q03": true
                   }
                 }
               }
