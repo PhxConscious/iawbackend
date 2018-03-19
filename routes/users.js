@@ -4,9 +4,9 @@ let knex = require('../db/knex');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-    knex('user_table').fullOuterJoin("expert_user_join", "user_table.firebase_id", "expert_user_join.user_id").select().where({
-      "isAdmin": false,
-      "isExpert": false
+    knex('user_table').fullOuterJoin("expert_user_join", "user_table.firebase_id", "expert_user_join.user_id").select().whereNot({
+      "isAdmin": true,
+      "isExpert": true
     })
         .then(function(data) {
             res.send(data);
@@ -54,6 +54,8 @@ router.put('/:firebase_id', function (req, res, next) {
         .where("firebase_id", req.params.firebase_id)
         .update({
             "user_progress": req.body.userProgress,
+            "isAdmin": req.body.isAdmin,
+            "isExpert": req.body.isExpert
         })
         .then(user => {
             knex("user_table")
@@ -61,6 +63,16 @@ router.put('/:firebase_id', function (req, res, next) {
                 .then(user => res.send(user))
         })
 });
+
+router.delete('/:firebase_id', function(req, res, next) {
+  knex('user_table')
+    .where('firebase_id', req.params.firebase_id)
+    .del()
+    .returning("*")
+    .then(data => {
+      res.send(data)
+  })
+})
 
 
 
