@@ -64,6 +64,15 @@ router.put('/:firebase_id', function (req, res, next) {
         })
 });
 
+router.delete('/:firebase_id', function(req, res, next) {
+  knex('user_table')
+    .where('firebase_id', req.params.firebase_id)
+    .del()
+    .returning("*")
+    .then(data => {
+      res.send(data)
+  })
+})
 
 
 
