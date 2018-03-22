@@ -4,6 +4,9 @@ exports.up = function(knex, Promise) {
         table.string('company_name');
         table.string('company_email');
         table.string('company_phone');
+        table.string('primary_contact_full_name');
+        table.string('primary_contact_phone_number');
+        table.string('primary_contact_email');
         table.string('company_content_creator');
         table.string('company_brand_id');
         table.string('company_primary_goal');
