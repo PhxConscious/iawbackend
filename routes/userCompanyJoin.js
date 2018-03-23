@@ -15,12 +15,16 @@ router.get('/', function(req, res) {
         })
 });
 
-router.get('/:firebase_id', function(req, res) {
-    knex.raw(`select * from user_company_join where firebase_id = '${req.params.firebase_id}'`)
+router.get('/:firebase_id', function(req, res, next) {
+  console.log("in correct route", req.params.firebase_id)
+    knex("user_company_join").fullOuterJoin("company_table", "user_company_join.company_id", "company_table.company_id")
+    .select("*")
+    .where("user_company_join.firebase_id", req.params.firebase_id)
         .then(function(data) {
-            res.send(data.rows)
+            res.send(data)
         })
 });
+
 
 router.post('/new/:firebase_id', function(req, res) {
     let randomNumber = randomNumberGen();
