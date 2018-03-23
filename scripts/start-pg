@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -p 5432:5432 -d --name iaw-pg -e POSTGRES_PASSWORD=elephant -e POSTGRES_DB=iaw postgres
