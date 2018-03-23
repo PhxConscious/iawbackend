@@ -11,17 +11,6 @@ module.exports = {
         }
     },
 
-    // consider eliminating this section?  just use production?
-    staging: {
-        client: 'postgresql',
-        connection: {
-            database: 'de4fse0jv85blu',
-            host: 'postgres://gnqsaqtswopemg:716876673327f8d575cf12aebda0b47864a475c432fbceecfc31103da4910190@ec2-107-20-233-240.compute-1.amazonaws.com:5432/de4fse0jv85blu',
-            user:     'gnqsaqtswopemg',
-            password: '716876673327f8d575cf12aebda0b47864a475c432fbceecfc31103da4910190'
-        },
-    },
-
     production: {
         client: 'postgresql',
         connection: {
