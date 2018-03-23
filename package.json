@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": ". tmp/ENV 2> /dev/null; node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
