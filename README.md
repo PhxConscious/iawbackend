@@ -23,3 +23,13 @@ knex seed:run
 ```bash
 npm run start
 ```
+
+## Configuration
+
+If the default port/database config don't work for you, you can customize them by adding a `tmp/ENV` file.  Here is an example with the default values:
+
+```
+export PORT=8080
+export IAW_DB=iaw
+export IAW_DB_HOST=127.0.0.1
+```
