@@ -13,6 +13,16 @@ exports.seed = function(knex, Promise) {
         {firebase_id: 'kyletheadmin', comment: "nope. This is public", parent_id: 5},
         {firebase_id: 'joetheclient', comment: "Really? how embarassing.", parent_id: 5},
         {firebase_id: 'kyletheadmin', comment: "I know, right? and there's no deleting posts either.", parent_id: 5},
+        {firebase_id: 'francoistheclient', comment: "3rd comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "4th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "5th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "6th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "7th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "8th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "9th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "10th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "11th comment", parent_id: null},
+        {firebase_id: 'francoistheclient', comment: "12th comment", parent_id: null},
 
       ]);
     });
