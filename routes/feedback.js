@@ -19,18 +19,10 @@ router.get('/parent/:parent_id', function(req, res, next) {
 })
 
 router.get('/:limit/:offset', function(req, res) {
-    // pagination default params
+
     let limit, offset;
-    if(typeof(req.params.limit)!=="number"){
-      limit = 5;
-    } else {
       limit = req.params.limit
-    }
-    if(typeof(req.params.offset)!=="number"){
-      offset = 0;
-    } else {
       offset = req.params.offset
-    }
 
     knex("feedback").join("user_table", "feedback.firebase_id", "user_table.firebase_id").select("user_table.first_name", "user_table.last_name", "feedback.comment", "feedback.created_at", "feedback.feedback_id", "feedback.parent_id", "feedback.firebase_id")
       .where("parent_id", null)
