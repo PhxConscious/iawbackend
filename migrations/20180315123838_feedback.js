@@ -3,8 +3,9 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('feedback', function(table){
         table.increments('feedback_id');
         table.string('firebase_id');
-        table.string('comment');
-        table.timestamp('created_at').default(knex.fn.now())
+        table.text('comment', ["mediumtext"]);
+        table.string('parent_id');
+        table.timestamp('created_at').default(knex.fn.now());
     });
 };
 
