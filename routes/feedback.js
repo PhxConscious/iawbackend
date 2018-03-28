@@ -3,11 +3,7 @@ let router = express.Router();
 let knex = require('../db/knex');
 
 
-router.get('/', function(req, res) {
-    knex("feedback").join("user_table", "feedback.firebase_id", "user_table.firebase_id").select("user_table.first_name", "user_table.last_name", "feedback.comment", "feedback.created_at", "feedback.feedback_id", "feedback.parent_id", "feedback.firebase_id")
-      .where("parent_id", null)
-      .then(data => res.send(data))
-});
+
 
 router.get('/user/:firebase_id', function(req, res) {
   knex("feedback").select()
@@ -18,8 +14,31 @@ router.get('/user/:firebase_id', function(req, res) {
 router.get('/parent/:parent_id', function(req, res, next) {
   knex("feedback").join("user_table", "feedback.firebase_id", "user_table.firebase_id").select("user_table.first_name", "user_table.last_name", "feedback.comment", "feedback.created_at", "feedback.feedback_id", "feedback.parent_id", "feedback.firebase_id")
     .where("parent_id", req.params.parent_id)
+    .limit(10)
     .then(data => res.send(data))
 })
+
+router.get('/:limit/:offset', function(req, res) {
+    // pagination default params
+    let limit, offset;
+    if(typeof(req.params.limit)!=="number"){
+      limit = 5;
+    } else {
+      limit = req.params.limit
+    }
+    if(typeof(req.params.offset)!=="number"){
+      offset = 0;
+    } else {
+      offset = req.params.offset
+    }
+
+    knex("feedback").join("user_table", "feedback.firebase_id", "user_table.firebase_id").select("user_table.first_name", "user_table.last_name", "feedback.comment", "feedback.created_at", "feedback.feedback_id", "feedback.parent_id", "feedback.firebase_id")
+      .where("parent_id", null)
+      .limit(limit)
+      .offset(offset)
+      .orderBy("feedback_id", "asc")
+      .then(data => res.send(data))
+});
 
 router.get('/comment/:feedback_id', function(req, res) {
   knex("feedback").select()
@@ -44,7 +63,6 @@ router.post('/new/:firebase_id', function(req, res) {
       .then(data => {
         res.send(data)
       })
-
     })
 })
 
