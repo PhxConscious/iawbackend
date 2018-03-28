@@ -13,12 +13,7 @@ module.exports = {
 
     production: {
         client: 'postgresql',
-        connection: {
-            database: process.env.IAW_DB,
-            host: process.env.IAW_DB_HOST,
-            user: process.env.IAW_DB_USER,
-            password: process.env.IAW_DB_PASSWORD,
-        },
+        connection: process.env.DATABASE_URL,
     }
 
 };
