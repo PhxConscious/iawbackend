@@ -3,7 +3,11 @@ let router = express.Router();
 let knex = require('../db/knex');
 
 
-
+router.get('/getall', function(req,res,next){
+  knex('feedback').join("user_table", "feedback.firebase_id", "user_table.firebase_id").select("user_table.first_name", "user_table.last_name", "feedback.comment", "feedback.created_at", "feedback.feedback_id", "feedback.parent_id", "feedback.firebase_id")
+    .orderBy("feedback_id", "asc")
+    .then(data => res.send(data))
+})
 
 router.get('/user/:firebase_id', function(req, res) {
   knex("feedback").select()
@@ -25,10 +29,10 @@ router.get('/:limit/:offset', function(req, res) {
       offset = req.params.offset
 
     knex("feedback").join("user_table", "feedback.firebase_id", "user_table.firebase_id").select("user_table.first_name", "user_table.last_name", "feedback.comment", "feedback.created_at", "feedback.feedback_id", "feedback.parent_id", "feedback.firebase_id")
+      .orderBy("feedback_id", "desc")
       .where("parent_id", null)
       .limit(limit)
       .offset(offset)
-      .orderBy("feedback_id", "asc")
       .then(data => res.send(data))
 });
 
