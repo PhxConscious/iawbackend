@@ -271,7 +271,7 @@ exports.seed = function (knex, Promise) {
                                             },
                                             {
                                                 "id": "u02l02q04",
-                                                "contentType": "checkTasks",
+                                                "contentType": "copyTextArea",
                                                 "title": "Compose your company bio in this field. Get creative! When you're ready, copy and paste it into your Instagram bio by going to instagram.com/[company_instagram]",
                                                 "description": "",
                                                 "buttonText": "FINISH LESSON 2"
