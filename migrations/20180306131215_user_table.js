@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
         table.string('firebase_id');
         table.boolean('isExpert').default(false);
         table.boolean('isAdmin').default(false);
+        table.boolean('isInstaStud').default(false);
         table.json('user_progress');
     });
 };

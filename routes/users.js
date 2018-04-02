@@ -21,7 +21,7 @@ router.get('/experts', function (req, res, next) {
     })
 });
 
-//Post new user to database
+//Post new user to database - not instaStud by default
 router.post('/new', function(req, res, next) {
 
     knex('user_table')
@@ -56,6 +56,19 @@ router.put('/:firebase_id', function (req, res, next) {
             "user_progress": req.body.userProgress,
             "isAdmin": req.body.isAdmin,
             "isExpert": req.body.isExpert
+        })
+        .then(user => {
+            knex("user_table")
+              .where("firebase_id", req.params.firebase_id)
+                .then(user => res.send(user))
+        })
+});
+
+router.put('/updateinstastud/:firebase_id', function (req, res, next) {
+    knex(`user_table`)
+        .where("firebase_id", req.params.firebase_id)
+        .update({
+            "isInstaStud": req.body.isInstaStud
         })
         .then(user => {
             knex("user_table")
