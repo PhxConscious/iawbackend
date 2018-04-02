@@ -4,8 +4,8 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex('user_table').insert([{
-          "first_name": "Joe the client",
-          "last_name": "Seph",
+          "first_name": "JoeTheClient",
+          "last_name": "TestUser",
           "user_email": "joe@test.com",
           "user_phone": "555-555-5555",
           "firebase_id": "joetheclient",
@@ -137,8 +137,8 @@ exports.seed = function(knex, Promise) {
           }
         },
         {
-          "first_name": "Bob the expert",
-          "last_name": "Jenking",
+          "first_name": "BobTheExpert",
+          "last_name": "TestUser",
           "user_email": "bob@test.com",
           "user_phone": "5555555555",
           "firebase_id": "bobtheexpert",
@@ -266,8 +266,8 @@ exports.seed = function(knex, Promise) {
           }
         },
         {
-          "first_name": "Kyle the admin",
-          "last_name": "Jenking",
+          "first_name": "KyleTheAdmin",
+          "last_name": "TestUser",
           "user_email": "kyle@test.com",
           "user_phone": "5555555555",
           "firebase_id": "kyletheadmin",
@@ -395,8 +395,8 @@ exports.seed = function(knex, Promise) {
           }
         },
         {
-          "first_name": "sarahtheclient",
-          "last_name": "sarahsmith",
+          "first_name": "SarahTheclient",
+          "last_name": "TestUser",
           "user_email": "sarah@test.com",
           "user_phone": "5555555555",
           "firebase_id": "sarahtheclient",
@@ -524,8 +524,8 @@ exports.seed = function(knex, Promise) {
           }
         },
         {
-          "first_name": "Hiroshi",
-          "last_name": "Yakamoto",
+          "first_name": "HiroshiTheClient",
+          "last_name": "TestUser",
           "user_email": "hiroshi@test.com",
           "user_phone": "5555555555",
           "firebase_id": "hiroshitheclient",
@@ -653,8 +653,8 @@ exports.seed = function(knex, Promise) {
           }
         },
         {
-          "first_name": "Francois",
-          "last_name": "Girard",
+          "first_name": "FrancoisTheClient",
+          "last_name": "TestUser",
           "user_email": "francois@test.com",
           "user_phone": "5555555555",
           "firebase_id": "francoistheclient",
