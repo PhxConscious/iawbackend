@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
           "firebase_id": "joetheclient",
           "isExpert": false,
           "isAdmin": false,
+          "isInstaStud": true,
           "user_progress": {
              "u01":{
                 "unitLocked":false,
@@ -143,6 +144,7 @@ exports.seed = function(knex, Promise) {
           "firebase_id": "bobtheexpert",
           "isExpert": true,
           "isAdmin": false,
+          "isInstaStud": false,
           "user_progress": {
             "u01": {
               "unitLocked": false,
@@ -271,6 +273,7 @@ exports.seed = function(knex, Promise) {
           "firebase_id": "kyletheadmin",
           "isExpert": true,
           "isAdmin": true,
+          "isInstaStud": false,
           "user_progress": {
             "u01": {
               "unitLocked": false,
@@ -399,6 +402,7 @@ exports.seed = function(knex, Promise) {
           "firebase_id": "sarahtheclient",
           "isExpert": false,
           "isAdmin": false,
+          "isInstaStud": true,
           "user_progress": {
             "u01": {
               "unitLocked": false,
@@ -527,6 +531,7 @@ exports.seed = function(knex, Promise) {
           "firebase_id": "hiroshitheclient",
           "isExpert": false,
           "isAdmin": false,
+          "isInstaStud": true,
           "user_progress": {
             "u01": {
               "unitLocked": false,
@@ -655,6 +660,7 @@ exports.seed = function(knex, Promise) {
           "firebase_id": "francoistheclient",
           "isExpert": false,
           "isAdmin": false,
+          "isInstaStud": true,
           "user_progress": {
             "u01": {
               "unitLocked": false,
