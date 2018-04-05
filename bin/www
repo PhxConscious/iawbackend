@@ -6,7 +6,26 @@
 
 var app = require('../app');
 var debug = require('debug')('iawbackend:server');
-var http = require('http');
+// var http = require('http');
+
+/**
+ * Updates to work with socket.io
+*/
+
+
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var io = module.exports.io = require('socket.io')(server);
+// io.on('connection', function(){
+//   console.log("io listening")
+// })
+
+const SocketManager = require('../socketIo/SocketManager')
+
+io.on('connection', SocketManager)
+
+
+
 
 /**
  * Get port from environment and store in Express.
@@ -19,7 +38,8 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+// turned off for socket.io implementation *dylan
+// var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
