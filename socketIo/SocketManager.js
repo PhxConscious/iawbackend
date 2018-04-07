@@ -1,14 +1,16 @@
-const io = require('../bin/www').io
+const io = require('../bin/www').io;
+let knex = require('../db/knex');
 
 const { VERIFY_USER, USER_CONNECTED, USER_DISCONNECTED,
 		LOGOUT, COMMUNITY_CHAT, MESSAGE_RECIEVED, MESSAGE_SENT,
-		TYPING, PRIVATE_MESSAGE, NEW_CHAT_USER  } = require('./Events')
+		TYPING, PRIVATE_MESSAGE, NEW_CHAT_USER, EXPERT_CHAT  } = require('./Events')
 
 const { createUser, createMessage, createChat } = require('./Factories')
 
 let connectedUsers = { }
 
 let communityChat = createChat({ isCommunity:true })
+let expertChat;
 
 module.exports = function(socket){
 
@@ -20,16 +22,54 @@ module.exports = function(socket){
 	let sendTypingFromUser;
 
 	//Verify Username
-	socket.on(VERIFY_USER, (nickname, callback)=>{
-		if(isUser(connectedUsers, nickname)){
+	socket.on(VERIFY_USER, (firebase_id, callback)=>{
+		console.log("firebase_id", firebase_id)
+		if(isUser(connectedUsers, firebase_id)){
 			callback({ isUser:true, user:null })
 		}else{
-			callback({ isUser:false, user:createUser({name:nickname, socketId:socket.id})})
+			knex("expert_user_join").fullOuterJoin("user_table", "expert_user_join.user_id", "user_table.firebase_id").select()
+				.where("firebase_id", firebase_id)
+				// TODO need error handling: if no user_expert_join than it's an empty array
+				.then(userInfo => {
+					callback({
+					isUser: false,
+					user: createUser({
+						name:userInfo[0].first_name,
+						socketId:socket.id,
+						userId: userInfo[0].firebase_id
+					})
+				})
+				knex("user_table")
+					.join("user_chats_join", "user_table.firebase_id", "user_chats_join.user_id")
+					.join("chats", "user_chats_join.chat_id", "chats.chat_id")
+					.select()
+					.then(chatInfo => {
+						console.log('chatInfo', chatInfo)
+						// , chatInfo[0].messages.messages, chatInfo[0].name, chatInfo[0].users)
+						createChat({messages: chatInfo[0].messages.messages, name: chatInfo[0].name, users: chatInfo[0].users
+						})
+						expertChat = createChat({messages: chatInfo[0].messages.messages, name: chatInfo[0].name, users: chatInfo[0].users
+						})
+					})
+			})
 		}
 	})
 
 	//User Connects with username
 	socket.on(USER_CONNECTED, (user)=>{
+		console.log("USER_CONNECTED", "user", user)
+		// theUserObj is = {
+		// 	userId: 'firebase_id',
+		// 	name: 'name',
+		// 	socketId: "autoGen?"
+		// }
+
+
+		// knex.select().table(`user_table`)
+    //     .where("firebase_id", user)
+    //     .then(userInfo => {
+    //         console.log("user",userInfo)
+    //     })
 		user.socketId = socket.id
 		connectedUsers = addUser(connectedUsers, user)
 		socket.user = user
@@ -38,7 +78,7 @@ module.exports = function(socket){
 		sendTypingFromUser = sendTypingToChat(user.name)
 
 		io.emit(USER_CONNECTED, connectedUsers)
-		console.log(connectedUsers);
+		// console.log('connectedUsers', connectedUsers);
 
 	})
 
@@ -48,7 +88,7 @@ module.exports = function(socket){
 			connectedUsers = removeUser(connectedUsers, socket.user.name)
 
 			io.emit(USER_DISCONNECTED, connectedUsers)
-			console.log("Disconnect", connectedUsers);
+			// console.log("Disconnect", connectedUsers);
 		}
 	})
 
@@ -57,13 +97,17 @@ module.exports = function(socket){
 	socket.on(LOGOUT, ()=>{
 		connectedUsers = removeUser(connectedUsers, socket.user.name)
 		io.emit(USER_DISCONNECTED, connectedUsers)
-		console.log("Disconnect", connectedUsers);
+		// console.log("Disconnect", connectedUsers);
 
 	})
 
 	//Get Community Chat
-	socket.on(COMMUNITY_CHAT, (callback)=>{
-		callback(communityChat)
+	// socket.on(COMMUNITY_CHAT, (callback)=>{
+	// 	callback(communityChat)
+	// })
+
+	socket.on(EXPERT_CHAT, (callback)=>{
+		callback(expertChat)
 	})
 
 	socket.on(MESSAGE_SENT, ({chatId, message})=>{
@@ -71,6 +115,7 @@ module.exports = function(socket){
 	})
 
 	socket.on(TYPING, ({chatId, isTyping})=>{
+		// console.log("sendTypingFromUser", chatId, isTyping)
 		sendTypingFromUser(chatId, isTyping)
 	})
 
@@ -117,7 +162,34 @@ function sendTypingToChat(user){
 */
 function sendMessageToChat(sender){
 	return (chatId, message)=>{
+
+		console.log("sendMessageToChat", sender, chatId, message)
+
+
+		knex('chats')
+			.select()
+			.where("chat_id", chatId)
+			.then(old => {
+				console.log("old", old)
+				// let tempMsgs = old[0].messages.messages;
+				// let newMsgs = tempMsgs.concat(message)
+				// knex('chats')
+				// 	.select()
+				// 	.where("chat_id", chatId)
+				// 	.update({
+				// 		messages: {messages:newMsgs},
+				// 	})
+				// 	.returning("*")
+				// 	.then(updated => console.log('updated chat', updated))
+
+			})
+
+
+
+
+
 		io.emit(`${MESSAGE_RECIEVED}-${chatId}`, createMessage({message, sender}))
+
 	}
 }
 

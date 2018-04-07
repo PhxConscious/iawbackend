@@ -528,7 +528,7 @@ exports.seed = function(knex, Promise) {
           "last_name": "TestUser",
           "user_email": "hiroshi@test.com",
           "user_phone": "5555555555",
-          "firebase_id": "hiroshitheclient",
+          "firebase_id": "sYW2qp9RKkPgSPPjmaEWo4SlgCn1",
           "isExpert": false,
           "isAdmin": false,
           "isInstaStud": true,

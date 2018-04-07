@@ -14,6 +14,7 @@ var usercompanyjoin = require('./routes/userCompanyJoin');
 var userexpertjoin = require('./routes/userExpertJoin');
 var feedback = require('./routes/feedback');
 var payment = require('./routes/payment');
+var chats = require('./routes/chats');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/usercompanyjoin', usercompanyjoin);
 app.use('/userexpertjoin', userexpertjoin);
 app.use('/feedback', feedback);
 app.use('/payment', payment);
+app.use('/chats', chats);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
                     company_id: 'joeco'
                 },
                 {
-                    firebase_id: "hiroshitheclient",
+                    firebase_id: "sYW2qp9RKkPgSPPjmaEWo4SlgCn1",
                     company_id: 'hiroshico'
                 },
                 {

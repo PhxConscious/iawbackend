@@ -1,4 +1,5 @@
 const uuidv4 = require('uuid/v4')
+let knex = require('../db/knex');
 
 /*
 *	createUser
@@ -8,12 +9,11 @@ const uuidv4 = require('uuid/v4')
 *	@param {object}
 *		name {string}
 */
-const createUser = ({name = "", socketId = null } = {})=>(
+const createUser = ({name = "", socketId = null, userId = "" } = {})=>(
 	{
-		id:uuidv4(),
+		userId,
 		name,
 		socketId
-
 	}
 )
 
@@ -53,16 +53,38 @@ const createMessage = ({message = "", sender = ""} = { })=>(
 *		users {Array.string}
 *
 */
-const createChat = ({messages = [], name = "Community", users = [], isCommunity = false} = {})=>(
-	{
-		id:uuidv4(),
-		name: isCommunity ? name : createChatNameFromUsers(users),
-		messages,
-		users,
-		typingUsers:[],
-		isCommunity
+const createChat = ({messages = [], name = "Community", users = [], isCommunity = false} = {}) => {
+
+	let theChatId = uuidv4()
+
+	let mes = JSON.stringify(messages);
+  let us = JSON.stringify(users);
+  // console.log('resp', mes, us)
+  knex('chats')
+    .insert({
+      chat_id: theChatId,
+      name: "afactoryname",
+      messages: mes,
+      users: us
+    })
+    .returning("*")
+    .then(data => {
+      console.log("factory createChat", data)
+    })
+
+
+
+		return {
+			id:theChatId,
+			name: isCommunity ? name : createChatNameFromUsers(users),
+			messages,
+			users,
+			typingUsers:[],
+			isCommunity
+		}
+
 	}
-)
+
 
 /*
 * createChatNameFromUsers
