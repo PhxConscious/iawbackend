@@ -48,7 +48,7 @@ router.get('/:firebase_id', function (req, res, next) {
             if (users.length === 0) {
                 res.status(404).send({error: 'No user found with that ID.'})
             } else {
-                res.send(users[0]);
+                res.send(users);
             }
         })
 });
