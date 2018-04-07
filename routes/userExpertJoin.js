@@ -9,8 +9,10 @@ router.get('/', function(req, res) {
 });
 
 router.get('/experts/:user_id', function(req, res) {
+  console.log(req.params.user_id)
   knex("expert_user_join").join("user_table", "expert_user_join.user_id", "user_table.firebase_id").select()
-    .where("user_id", req.params.user_id)
+    .where("firebase_id", req.params.user_id)
+
     .then(data => res.send(data))
 })
 
