@@ -44,8 +44,12 @@ router.post('/new', function(req, res, next) {
 router.get('/:firebase_id', function (req, res, next) {
     knex.select().table(`user_table`)
         .where("firebase_id", req.params.firebase_id)
-        .then(user => {
-            res.send(user)
+        .then(users => {
+            if (users.length === 0) {
+                res.status(404).send({error: 'No user found with that ID.'})
+            } else {
+                res.send(users);
+            }
         })
 });
 
